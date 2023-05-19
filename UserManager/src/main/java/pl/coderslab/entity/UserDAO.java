@@ -29,7 +29,6 @@ public class UserDAO {
             statement.setString(2, user.getEmail());
             statement.setString(3, hashPassword(user.getPassword()));
             statement.executeUpdate();
-            //Pobieramy wstawiony do bazy identyfikator, a następnie ustawiamy id obiektu user.
             ResultSet resultSet = statement.getGeneratedKeys();
             if (resultSet.next()) {
                 user.setId(resultSet.getInt(1));

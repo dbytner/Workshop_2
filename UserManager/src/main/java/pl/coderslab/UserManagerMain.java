@@ -12,14 +12,13 @@ public class UserManagerMain {
 
         boolean end = false;
 
-        while (!end){
+        while (!end) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Jaką czynność chcesz wykonać:");
-            System.out.println("c - create user, r - read user, u - update user, d - delete user, f - find all users, x - zakończenie pracy");
+            printMenu();
             String letter = scanner.nextLine();
             char firstLetter = letter.charAt(0);
 
-            switch (firstLetter){
+            switch (firstLetter) {
                 case 'c': {
                     UserDAO userDAO = new UserDAO();
                     Scanner scanner1 = new Scanner(System.in);
@@ -33,18 +32,18 @@ public class UserManagerMain {
                     userDAO.create(createUser);
                     break;
                 }
-                case 'r':{
+                case 'r': {
                     UserDAO userDAO = new UserDAO();
                     Scanner scanner1 = new Scanner(System.in);
                     System.out.println("Podaj indeks użytkownika:");
                     userDAO.read(scanner1.nextInt());
                     break;
                 }
-                case 'u':{
+                case 'u': {
                     UserDAO userDAO = new UserDAO();
                     Scanner scanner1 = new Scanner(System.in);
                     System.out.println("Podaj indeks użytkownika");
-                    User updateUser =  userDAO.read(scanner1.nextInt());
+                    User updateUser = userDAO.read(scanner1.nextInt());
                     scanner1.nextLine();
                     System.out.println("Podaj nową nazwę użytkownika:");
                     updateUser.setUserName(scanner1.nextLine());
@@ -66,16 +65,22 @@ public class UserManagerMain {
                 case 'f': {
                     UserDAO userDAO = new UserDAO();
                     User[] users = userDAO.findAll();
-                    for (User u: users) {
+                    for (User u : users) {
                         System.out.println(u.getId() + " " + u.getUserName() + " " + u.getEmail());
                     }
                 }
-                default: break;
+                default:
+                    break;
                 case 'x': {
                     end = true;
                     break;
                 }
             }
         }
+    }
+
+    private static void printMenu() {
+        System.out.println("Jaką czynność chcesz wykonać:");
+        System.out.println("c - create user, r - read user, u - update user, d - delete user, f - find all users, x - zakończenie pracy");
     }
 }
