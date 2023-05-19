@@ -20,15 +20,20 @@ public class UserManagerTest {
 //        userDAO_1.create(user_5);
         User user = new User();
         user = userDAO_1.read(4);
-        System.out.println(user.getId() + " " + user.getUserName() + " " + user.getEmail() + " " + user.getPassword());
 
 
-        user = userDAO_1.read(5);
-        user.setUserName("Robert Kubica");
-        user.setEmail("rkubica@wp.pl");
-        user.setPassword("formula1");
-        userDAO_1.update(user);
+//        user = userDAO_1.read(5);
+//        user.setUserName("Robert Kubica");
+//        user.setEmail("rkubica@wp.pl");
+//        user.setPassword("formula1");
+//        userDAO_1.update(user);
 
+        //userDAO_1.delete(6);
+
+        User[] users = userDAO_1.findAll();
+        for (User u: users) {
+            System.out.println(u.getUserName());
+        }
 
     }
 }
