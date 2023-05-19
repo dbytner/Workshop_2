@@ -19,7 +19,7 @@ public class UserManagerTest {
 //        userDAO_1.create(user_4);
 //        userDAO_1.create(user_5);
         User user = new User();
-        user = userDAO_1.read(4);
+        user = userDAO_1.read(5);
 
 
 //        user = userDAO_1.read(5);
@@ -32,7 +32,7 @@ public class UserManagerTest {
 
         User[] users = userDAO_1.findAll();
         for (User u: users) {
-            System.out.println(u.getUserName());
+            System.out.println(u.getId() + " " + u.getUserName() + " " + u.getEmail());
         }
 
     }
